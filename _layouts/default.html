@@ -18,15 +18,12 @@
 
     <li>最新記事</li>
     <ul>
-      
-      <li><a href="/ruby/2020/09/03/my_second_post.html">ふたつめのとうこう</a></li>
-      
-      <li><a href="/programming/2020/09/03/my_first_post.html">さいしょのとうこう</a></li>
-      
+      {% for post in site.posts %}
+      <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+      {% endfor %}
     </ul>
   </ul>
-  <h1 id="トップページです">トップページです</h1>
-
+  {{ content }}
 </body>
 
 </html>
