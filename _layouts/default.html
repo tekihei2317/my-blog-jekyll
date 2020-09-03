@@ -22,6 +22,13 @@
       <li><a href="{{ post.url }}">{{ post.title }}</a></li>
       {% endfor %}
     </ul>
+
+    <li>カテゴリー</li>
+    <ul>
+      {% for category in site.categories %}
+      <li>{{ category[0] }}({{ category[1].size }})</li>
+      {% endfor %}
+    </ul>
   </ul>
   {{ content }}
 </body>
