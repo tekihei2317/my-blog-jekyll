@@ -18,17 +18,20 @@
 
     <li>最新記事</li>
     <ul>
-      {% for post in site.posts %}
+      {% for post in site.posts limit:3%}
       <li><a href="{{ post.url }}">{{ post.title }}</a></li>
       {% endfor %}
     </ul>
 
     <li>カテゴリー</li>
     <ul>
-      {% for category in site.categories %}
-      <li>{{ category[0] }}({{ category[1].size }})</li>
+      {% for category in site.categories%}
+      <li><a href="/categories/{{ category[0] }}">{{ category[0] }}({{ category[1].size }})</a></li>
       {% endfor %}
     </ul>
+
+    <li>アーカイブ</li>
+
   </ul>
   {{ content }}
 </body>
