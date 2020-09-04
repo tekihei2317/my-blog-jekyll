@@ -1,19 +1,20 @@
 ---
 layout: posts
 title: Jekyllのディレクトリ構成と、Jekyllでできること
+category: Jekyll
 ---
 
 ## Jekyllとは
 
 静的サイトを作るためのフレームワーク(Rubyのgem)です。記事を書くときにはmarkdown記法を使うことが出来ます。
 
-僕は以前Gatsbyという静的サイトジェネレータを少し使ってみたのですが、モダンフロントエンドはほとんど知らなかったので、ブラックボックスがたくさんあって辛かったです。
+以前Gatsbyという静的サイトジェネレータを少し使ってみたのですが、モダンフロントエンドはほとんど知らなかったので、ブラックボックスがたくさんあって辛かったです。
 
-今回使ってみたJekyllは、シンプルで、HTML/CSSの知識である程度理解できたので、HTML/CSSを知っていて、自分でブログを作ってみたいという人にはオススメかもしれません。
+今回使ってみたJekyllはシンプルで、HTML/CSSの知識である程度理解できたので、HTML/CSSを知っていて、自分でブログを作ってみたいという人にはオススメかもしれません。
 
 ## Jekyllのディレクトリ構成
 
-ディレクトリ構成はこんな感じになっています。
+ディレクトリ構成は大体こんな感じになっています。
 
 .  
 ├── _includes  
@@ -50,84 +51,67 @@ title: Jekyllのディレクトリ構成と、Jekyllでできること
 ## Jekyllで出来ること
 
 1. \_layouts、\_includesを用いたページの共通化/部品化
-2. markdownで記事を書ける
-3. Jekyllに組み込まれた変数とLiquidを用いて(多分)色々出来る
+1. markdownで記事を書ける
+1. Jekyllに組み込まれた変数とLiquidを用いて(多分)色々出来る
 
 <!-- dummy comment line for breaking list -->
 
-1. \_layouts、\_includesを用いたページの共通化/部品化
+### \_layouts、\_includesを用いたページの共通化/部品化
+  ブログ記事を書く際、frontmatterでレイアウトファイルを指定すると、そに記事の中身を挿入することが出来ます。
+  例えば\_layout/default.htmlとmarkdownファイルが以下のようだったしま す。
+  {% highlight html%}
+  {% raw %}
+    <!DOCTYPE html>
+    <html lang="ja">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Jekyll Blog</title>
+    </head>
+    <body>
+      {{ content }}
+    </body>
+    </html>
+  {% endraw %}
+  {% endhighlight %}
+  {% highlight markdown %}
+    ---
+    layout: default
+    ---
+    1. ほげ
+    2. ふが
+    3. ほげふが
+  {% endhighlight %}
+  すると、Jekyllはビルド時に以下のようなファイルを生成します。
+  {% highlight html %}
+    <!DOCTYPE html>
+    <html lang="ja">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Jekyll Blog</title>
+    </head>
+    <body>
+      <ol>
+      <li>ほげ</li>
+      <li>ふが</li>
+      <li>ほげふが</li>
+    </ol>
+    </body>
+    </html>
+  {% endhighlight %}
+  また\{\{ include ファイル名 \}\}とすることで、\_includes以下のフイルの中身を挿入することも出来ます。
 
-    ブログ記事を書く際、frontmatterでレイアウトファイルを指定すると、そこに記事の中身を挿入することが出来ます。
+### markdownで記事を書ける
 
-    例えば\_layout/default.htmlとmarkdownファイルが以下のようだったとしま す。
-
-    {% highlight html%}
-    {% raw %}
-      <!DOCTYPE html>
-      <html lang="ja">
-
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,      initial-scale=1.0">
-        <title>Jekyll Blog</title>
-      </head>
-
-      <body>
-        {{ content }}
-      </body>
-
-      </html>
-    {% endraw %}
-    {% endhighlight %}
-
-    {% highlight markdown %}
-      ---
-      layout: default
-      ---
-
-      1. ほげ
-      2. ふが
-      3. ほげふが
-
-    {% endhighlight %}
-
-    すると、Jekyllはビルド時に以下のようなファイルを生成します。
-
-    {% highlight html %}
-      <!DOCTYPE html>
-      <html lang="ja">
-
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,      initial-scale=1.0">
-        <title>Jekyll Blog</title>
-      </head>
-
-      <body>
-        <ol>
-        <li>ほげ</li>
-        <li>ふが</li>
-        <li>ほげふが</li>
-      </ol>
-
-      </body>
-
-      </html>
-    {% endhighlight %}
-
-    また\{\{ include ファイル名 \}\}とすることで、\_includes以下のファイルの中身を挿入することも出来ます。
-
-  2. markdownで記事を書ける
-
-     上述のように、markdownで記事を書くことが出来ます。
+markdownで記事を書くことができます。コードハイライトはLiquid(後述)を使うので、QrunchやCrieitにクロス投稿しようと思ったら、そこは修正しないといけなさそうです。
 
 
 
-3. Jekyllに組み込まれた変数とLiquidを用いて(多分)色々出来る
+### Jekyllに組み込まれた変数とLiquidを用いて(多分)色々出来る
 
-   LiquidとはJekyllで使われるテンプレート言語です。Railsのerbのように、htmlに制御文を埋め込むことが出来ます。
-
-   またLiquidからは、Jekyllに組み込まれた変数(site変数、page変数など)を使うことが出来ます。例えばsite.postsには全ての投稿の情報が入っているので、以下のようにして投稿を表示することが出来ます。
+  LiquidとはJekyllで使われるテンプレート言語です。Railsのerbのようにhtmlに制御文を埋め込むことが出来ます。
+  またLiquidからは、Jekyllに組み込まれた変数(site変数、page変数など)を使うことが出来ます。例えばsite.postsには全ての投稿の情報が入っているで、以下のようにすると投稿を表示することが出来ます。
 
   コード
   {% highlight liquid %}
@@ -147,7 +131,7 @@ title: Jekyllのディレクトリ構成と、Jekyllでできること
 
 ## 感想
 
-まだスタイルは当てていませんが、記事が増えてきたらテーマとか参考にしながら書いてみようと思います(そのままテーマを使う気もします笑)。ブログ制作を通してレスポンシブ対応とかデプロイとか勉強できたらいいなと思います。
+まだCSSはほとんど書いていませんが、記事が増えてきたらテーマとか参考にしながら書いてみようと思います(そのままテーマを使う気もします笑)。ブログ制作を通してレスポンシブ対応とかデプロイとか勉強できたらいいなと思います。
 
 ## 参考
 
