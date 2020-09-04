@@ -10,30 +10,12 @@
 
 <body>
   <a href="/">My Blog</a>
-  <ul>
-    <li>プロフィール</li>
-    <ul>
-      <li>名前: 鉄馬</li>
-      <li>Twitter: <a href="https://twitter.com/tecchaxn">@tecchaxn</a></li>
-    </ul>
 
-    <li>最新記事</li>
-    <ul>
-      {% for post in site.posts limit:3%}
-      <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-      {% endfor %}
-    </ul>
+  {% include profile.html %}
+  {% include latest_posts.html %}
+  {% include categories.html %}
 
-    <li>カテゴリー</li>
-    <ul>
-      {% for category in site.categories%}
-      <li><a href="/categories/{{ category[0] }}">{{ category[0] }}({{ category[1].size }})</a></li>
-      {% endfor %}
-    </ul>
-
-    <li>アーカイブ</li>
-
-  </ul>
+  <hr>
   {{ content }}
 </body>
 
