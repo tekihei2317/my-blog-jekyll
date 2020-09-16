@@ -38,7 +38,7 @@ tekihei:~ $ systemctl status mysql
 Active: activeとなっているので、起動しているっぽいです。
 
 
-MySQLに入ってみる
+MySQLに入ってみます。
 
 {% highlight shell %}
 
@@ -70,7 +70,7 @@ mysql>
 
 何かここがおかしい気がしたので調べてみると、この二つのコマンドでユーザー認証の仕方が違うようです。
 
-現在の認証方法を確認してみると、auth_socketというものが使われているようです。
+現在のrootユーザーの認証方法を確認してみると、auth_socketというものが使われているようです。
 
 {% highlight shell %}
 
@@ -100,7 +100,7 @@ mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'p
 Query OK, 0 rows affected (0.00 sec)
 {% endhighlight %}
 
-あとはrailsプロジェクトのdatabase.ymlに設定したパスワード(今回は'password')を指定すればよいです。
+あとはrailsプロジェクトのconfig/database.ymlに設定したパスワード(今回は'password')を指定すればよいです。
 
 {% highlight yaml %}
 default: &default
