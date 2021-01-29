@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+  <title>tecchaxn's blog</title>
+</head>
+
+<body>
+  <h2 class="blog-title">
+    <a href="/">tecchaxn's blog</a>
+  </h2>
+
+  <h3>プロフィール</h3>
+<ul>
+  <li>名前: 鉄馬</li>
+  <li>Twitter: <a target="_blank" href="https://twitter.com/tecchaxn">@tecchaxn</a></li>
+</ul>
+  <h3>最新記事</h3>
+<ul>
+  
+  <li><a href="/rails/2020/09/16/rails_error_mysql_ubuntu.html">Ubuntuでrails newした後にrails db:createやrails s等をすると、Access denied for user 'root'@'localhost'が出る</a></li>
+  
+  <li><a href="/jekyll/2020/09/04/about_jekyll.html">Jekyllのディレクトリ構成と、Jekyllでできること</a></li>
+  
+  <li><a href="/ruby/2020/09/03/my_third_post.html">みっつめのとうこう</a></li>
+  
+  <li><a href="/ruby/2020/09/03/my_second_post.html">ふたつめのとうこう</a></li>
+  
+  <li><a href="/programming/2020/09/03/my_first_post.html">さいしょのとうこう</a></li>
+  
+</ul>
+  <h3>カテゴリ</h3>
+<ul>
+  
+  <li><a href="/categories/Programming">Programming(1)</a></li>
+  
+  <li><a href="/categories/Ruby">Ruby(2)</a></li>
+  
+  <li><a href="/categories/Jekyll">Jekyll(1)</a></li>
+  
+  <li><a href="/categories/Rails">Rails(1)</a></li>
+  
+</ul>
+
+  <hr>
+  <h1 class="post-title">Ubuntuでrails newした後にrails db:createやrails s等をすると、Access denied for user 'root'@'localhost'が出る</h1>
+<p class="post-date">2020-09-16</p>
+<h2 id="環境">環境</h2>
+
+<ul>
+  <li>Ubuntu 18.04</li>
+  <li>MySQL 5.7.31</li>
+</ul>
+
+<h2 id="状況">状況</h2>
+
+<p>rails newした直後に、rails db:createを実行したり、rails sを実行後localhost:3000にアクセスすると、Access denied for user ‘root’@’localhost’というエラーが出る。</p>
+
+<h2 id="やったこと">やったこと</h2>
+
+<p>とりあえずMySQLが起動していることを確認します。</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">tekihei:~ <span class="nv">$ </span>systemctl status mysql
+● mysql.service - MySQL Community Server
+   Loaded: loaded <span class="o">(</span>/lib/systemd/system/mysql.service<span class="p">;</span> enabled<span class="p">;</span> vendor preset: enabled<span class="o">)</span>
+   Active: active <span class="o">(</span>running<span class="o">)</span> since Wed 2020-09-16 08:06:27 JST<span class="p">;</span> 5h 51min ago
+  Process: 25754 <span class="nv">ExecStart</span><span class="o">=</span>/usr/sbin/mysqld <span class="nt">--daemonize</span> <span class="nt">--pid-file</span><span class="o">=</span>/run/mysqld/mysqld.pid <span class="o">(</span><span class="nv">code</span><span class="o">=</span>exited, <span class="nv">status</span><span class="o">=</span>0/SUCCESS<span class="o">)</span>
+  Process: 25745 <span class="nv">ExecStartPre</span><span class="o">=</span>/usr/share/mysql/mysql-systemd-start pre <span class="o">(</span><span class="nv">code</span><span class="o">=</span>exited, <span class="nv">status</span><span class="o">=</span>0/SUCCESS<span class="o">)</span>
+ Main PID: 25756 <span class="o">(</span>mysqld<span class="o">)</span>
+    Tasks: 28 <span class="o">(</span>limit: 4306<span class="o">)</span>
+   CGroup: /system.slice/mysql.service
+           └─25756 /usr/sbin/mysqld <span class="nt">--daemonize</span> <span class="nt">--pid-file</span><span class="o">=</span>/run/mysqld/mysqld.pid
+
+ 9月 16 08:06:26 tekihei-ThinkPad-X250 systemd[1]: Starting MySQL Community Server...
+ 9月 16 08:06:27 tekihei-ThinkPad-X250 systemd[1]: Started MySQL Community Server.</code></pre></figure>
+
+<p>Active: activeとなっているので、起動しているっぽいです。</p>
+
+<p>MySQLに入ってみます。</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">tekihei:~ <span class="nv">$ </span>mysql <span class="nt">-u</span> root <span class="nt">-p</span>
+Enter password: 
+ERROR 1698 <span class="o">(</span>28000<span class="o">)</span>: Access denied <span class="k">for </span>user <span class="s1">'root'</span>@<span class="s1">'localhost'</span></code></pre></figure>
+
+<p>Access deniedされました。</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">tekihei:~ <span class="nv">$ </span><span class="nb">sudo </span>mysql <span class="nt">-u</span> root
+<span class="o">[</span><span class="nb">sudo</span><span class="o">]</span> password <span class="k">for </span>tekihei: 
+Welcome to the MySQL monitor.  Commands end with <span class="p">;</span> or <span class="se">\g</span><span class="nb">.</span>
+Your MySQL connection <span class="nb">id </span>is 22
+Server version: 5.7.31-0ubuntu0.18.04.1 <span class="o">(</span>Ubuntu<span class="o">)</span>
+
+Copyright <span class="o">(</span>c<span class="o">)</span> 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type <span class="s1">'help;'</span> or <span class="s1">'\h'</span> <span class="k">for </span>help. Type <span class="s1">'\c'</span> to clear the current input statement.
+
+mysql&gt; </code></pre></figure>
+
+<p>こっちだと入れました。</p>
+
+<p>何かここがおかしい気がしたので調べてみると、この二つのコマンドでユーザー認証の仕方が違うようです。</p>
+
+<p>現在のrootユーザーの認証方法を確認してみると、auth_socketというものが使われているようです。</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">mysql&gt; <span class="k">select </span>User, plugin, authentication_string from mysql.user<span class="p">;</span>
++------------------+-----------------------+-------------------------------------------+
+| User             | plugin                | authentication_string                     |
++------------------+-----------------------+-------------------------------------------+
+| root             | auth_socket           |                                           |
+| mysql.session    | mysql_native_password | <span class="k">*</span>THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE |
+| mysql.sys        | mysql_native_password | <span class="k">*</span>THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE |
+| debian-sys-maint | mysql_native_password | <span class="k">*</span>7C5D7A711BA14DD755BA0480832042D601D8E025 |
++------------------+-----------------------+-------------------------------------------+
+4 rows <span class="k">in </span><span class="nb">set</span> <span class="o">(</span>0.00 sec<span class="o">)</span></code></pre></figure>
+
+<h2 id="解決方法">解決方法</h2>
+
+<p>rootの認証方法をauth_socketからmysql_native_passwordに変えます。</p>
+
+<p>‘mysql -u root -p’ではmysql_native_password、’sudo mysql -u root’ ではauth_socketが認証方法として使われるようです。railsはMySQLに入るときに、mysql -u root -pコマンド(か、それに似たもの)を使うっぽいです。なのでrootの認証方法をmy_sql_native_passwordに変えれば、’mysql -u root -p’でMySQLに入ることができるようになり、Railsのエラーも解決できます。</p>
+
+<p>認証方法を変えるには、ALTER USER文を使います。</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">mysql&gt; ALTER USER <span class="s1">'root'</span>@<span class="s1">'localhost'</span> IDENTIFIED WITH mysql_native_password BY <span class="s1">'password'</span><span class="p">;</span>
+Query OK, 0 rows affected <span class="o">(</span>0.00 sec<span class="o">)</span></code></pre></figure>
+
+<p>あとはrailsプロジェクトのconfig/database.ymlに設定したパスワード(今回は’password’)を指定すればよいです。</p>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">default</span><span class="pi">:</span> <span class="nl">&amp;default</span>
+  <span class="na">adapter</span><span class="pi">:</span> <span class="s">mysql2</span>
+  <span class="na">encoding</span><span class="pi">:</span> <span class="s">utf8</span>
+  <span class="na">pool</span><span class="pi">:</span> <span class="s">&lt;%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %&gt;</span>
+  <span class="na">username</span><span class="pi">:</span> <span class="s">root</span>
+  <span class="na">password</span><span class="pi">:</span> <span class="s">password</span>
+  <span class="na">host</span><span class="pi">:</span> <span class="s">localhost</span>
+  <span class="c1"># socket: /tmp/mysql.sock</span></code></pre></figure>
+
+<p>これでrails db:createとrails sが実行できるようになりました。</p>
+
+<h2 id="参考">参考</h2>
+
+<ul>
+  <li><a href="http://mosyoesyoe.hatenablog.jp/entry/2018/05/08/160820">Ubuntu 18.04 (Bionic Beaver) に MySQL をインストールする</a></li>
+  <li><a href="http://mosyoesyoe.hatenablog.jp/entry/2018/05/08/160820">MySQLのrootでログインできない：ubuntu 18.04 Server とMysql5.7</a></li>
+</ul>
+
+<h2 id="まとめ">まとめ</h2>
+
+<p>環境構築でこんなにハマるとは思いませんでした。でも解決できたときは気持ちよかったです。MySQLに限らず分からないことがたくさんあるなぁと思いました。デプロイのときもハマりそうです。</p>
+
+</body>
+
+</html>

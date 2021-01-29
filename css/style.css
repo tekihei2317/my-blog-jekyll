@@ -1,0 +1,27 @@
+body {
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium",
+    "游ゴシック", "Yu Gothic", sans-serif;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.highlight {
+  margin: 0;
+  padding: 4px 16px;
+
+  font-size: 14.5px;
+}
+
+.blog-title a {
+  text-decoration: none;
+  color: black;
+}
+
+.post-title {
+  margin-bottom: 0px;
+}
+
+.post-date {
+  text-align: right;
+  margin-top: 0px;
+}
