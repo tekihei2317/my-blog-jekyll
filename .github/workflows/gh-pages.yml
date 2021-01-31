@@ -23,3 +23,4 @@ jobs:
         with:
           personal_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_site
+          cname: blog.tekihei2317.com
