@@ -1,8 +1,6 @@
 body {
   font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium",
     "游ゴシック", "Yu Gothic", sans-serif;
-  max-width: 1000px;
-  margin: 0 auto;
 }
 
 .highlight {
