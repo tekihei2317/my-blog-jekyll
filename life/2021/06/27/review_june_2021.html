@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+  <title>tecchaxn's blog</title>
+</head>
+
+<body>
+  <h2 class="blog-title">
+    <a href="/">tecchaxn's blog</a>
+  </h2>
+
+  <h3>プロフィール</h3>
+<ul>
+  <li>名前: 鉄馬</li>
+  <li>Twitter: <a target="_blank" href="https://twitter.com/tecchaxn">@tecchaxn</a></li>
+</ul>
+  <h3>最新記事</h3>
+<ul>
+  
+  <li><a href="/life/2021/06/27/review_june_2021.html">2021年6月の振り返り</a></li>
+  
+  <li><a href="/life/2021/06/06/review_may_2021.html">2021年5月の振り返り</a></li>
+  
+  <li><a href="/life/2021/05/05/review_april_2021.html">2021年4月の振り返り</a></li>
+  
+  <li><a href="/life/2021/03/27/review_march_2021.html">2021年3月の振り返り</a></li>
+  
+  <li><a href="/life/2021/02/28/review_february_2021.html">2021年2月の振り返り</a></li>
+  
+</ul>
+  <h3>カテゴリ</h3>
+<ul>
+  
+  <li><a href="/categories/Jekyll">Jekyll(1)</a></li>
+  
+  <li><a href="/categories/Rails">Rails(1)</a></li>
+  
+  <li><a href="/categories/Life">Life(6)</a></li>
+  
+</ul>
+
+  <hr>
+  <h1 class="post-title">2021年6月の振り返り</h1>
+<p class="post-date">2021-06-27</p>
+<h2 id="今月の出来事">今月の出来事</h2>
+
+<p>基本的に引きこもっていたので特になかったです。Google Mapを見ると、前に行きたかった公園が再開しているみたいなので、7月は行ってみたいなぁと思います。</p>
+
+<h2 id="読んだ本の振り返り">読んだ本の振り返り</h2>
+
+<p>ここ読んでも多分まだ身につかないなぁというところがあると、1冊読み切るのではなく中途半端になってしまうのが悩みです。こういうのはサラッと読んで、時間がたってからまた読み返すのがおそらく正解なのだと思います。本を読んでも基本的に内容は忘れてしまうので、本を読んだ後に何か実践できればOKということにしようと思います。</p>
+
+<h3 id="技術書">技術書</h3>
+
+<p><a href="https://www.amazon.co.jp/%E5%88%9D%E3%82%81%E3%81%A6%E3%81%AE%E8%87%AA%E5%8B%95%E3%83%86%E3%82%B9%E3%83%88-%E2%80%95Web%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E8%87%AA%E5%8B%95%E3%83%86%E3%82%B9%E3%83%88%E5%9F%BA%E7%A4%8E-Jonathan-Rasmusson/dp/4873118166">初めての自動テスト</a></p>
+
+<p>テストが初めての人向けに、ユニットテスト、結合テスト、UIテストがどういうものであるかが説明されています。何度も書かれていたのはテストのピラミッドという考え方です。これは理想的な自動テストの比率を表していて、上の層に行くほど実行時間とメンテナンスコストがかかるので、なるべく下の層のテストを書こうということです。</p>
+
+<p><img src="https://i.gyazo.com/7a3bc274f5703b8e4aebdc114d6dea81.png" alt="" /></p>
+
+<p>少し疑問に思っているのは、UIテストと結合テストの境界についてです。例えばAPIのテストは、アプリケーション全体で見るとUIを通していないので結合テストになると思います。しかし、APIを使う人から見ると、APIはUIに当たると思うので、UIのテストのような気もします。</p>
+
+<p>多分境界を引くことに意味はないと思うので、実行時間が早いテストから書くと理解しておきます。</p>
+
+<p><a href="https://www.amazon.co.jp/Nuxt-js%E3%83%93%E3%82%AE%E3%83%8A%E3%83%BC%E3%82%BA%E3%82%AC%E3%82%A4%E3%83%89-%E8%8A%B1%E8%B0%B7%E6%8B%93%E7%A3%A8-ebook/dp/B07J5434JB">Nuxt.jsビギナーズガイド</a></p>
+
+<p>とりあえず読みました。仕事でガッツリ使うのはもう少し先になりそうなので、それまではVueを使うノリで何とか乗り切ろうと思います。</p>
+
+<p><a href="https://www.amazon.co.jp/Linux%E3%81%A7%E5%8B%95%E3%81%8B%E3%81%97%E3%81%AA%E3%81%8C%E3%82%89%E5%AD%A6%E3%81%B6TCP-IP%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%85%A5%E9%96%80-%E3%82%82%E3%81%BF%E3%81%98%E3%81%82%E3%82%81-ebook/dp/B085BG8CH5?ref_=Oct_s9_apbd_obs_hd_bw_b2452&amp;pf_rd_r=WFJKQ3T2836C8J7BZW1P&amp;pf_rd_p=20feb3b4-7359-5734-b7c0-b9ea6cdac48f&amp;pf_rd_s=merchandised-search-10&amp;pf_rd_t=BROWSE&amp;pf_rd_i=492344">Linuxで動かしながら学ぶTCP/IPネットワーク入門</a></p>
+
+<p>一台のパソコンの中で仮想的にネットワークを区切って、ルーターを設置したりパケットを観察したりしました。IPより上の層はポートが出てきたので、アプリ作るときに考えていることと同じだなぁと理解できました。イーサネット(IPより下の層)は難しくてちょっと分からなかったです。CTFのネットワークの問題などを解いてから読み返すと、理解できるところが増えそうだなぁと思いました。</p>
+
+<p><a href="https://www.amazon.co.jp/CAREER-SKILLS-%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E9%96%8B%E7%99%BA%E8%80%85%E3%81%AE%E5%AE%8C%E5%85%A8%E3%82%AD%E3%83%A3%E3%83%AA%E3%82%A2%E3%82%AC%E3%82%A4%E3%83%89-%E3%82%B8%E3%83%A7%E3%83%B3%E3%83%BB%E3%82%BD%E3%83%B3%E3%83%A1%E3%82%BA-ebook/dp/B07FCYSNXT">CAREER SKILLS　ソフトウェア開発者の完全キャリアガイド</a></p>
+
+<p>実践しようと思ったことはブログを書くことです。筆者は、「私のキャリアで経験した成功の大半は、ブログのおかげである」と書いていました。なぜブログが重要かというと、自分がどういう人かを周りの人に知ってもらえるからです。例えば求人に応募するとき、定期的に更新しているブログがあれば、自分がどういう技術を持っているのか、どういうことが出来るのかを知ってもらうことが出来ます。逆にいえば、どんなにすごい力を持っていったとしても、それを発信したり記録に残していなければ、アピールすることはできないということです。
+アウトプットして何者かになりたいと思います。</p>
+
+<h2 id="取り組みの振り返り">取り組みの振り返り</h2>
+
+<h3 id="isuconハンズオンに参加">ISUCONハンズオンに参加</h3>
+
+<p>抽選に当たって参加することが出来ました。当日は一人一台サーバーが割り当られて、ベンチマーカーを回す→alpコマンドでログ解析→チューニング→…という流れを体験しました。ISUCONの雰囲気がつかめたのでよかったです。</p>
+
+<h2 id="6月の目標の振り返り">6月の目標の振り返り</h2>
+
+<p><strong>技術系</strong></p>
+<ul>
+  <li>ISUCONのハンズオンに参加する→OK!</li>
+  <li>SQL Judgeを完成させる(インフラ以外)→月末頑張ったのでOK!
+    <ul>
+      <li>モチベーションがお亡くなりになって途中やってなかったです</li>
+      <li>先輩にモチベをかきたててもらって(感謝)、月末の一週間は頑張れました</li>
+      <li>まだセキュリティがガバガバなのですが、形になってきました</li>
+    </ul>
+  </li>
+  <li><a href="https://www.amazon.co.jp/Nuxt-js%E3%83%93%E3%82%AE%E3%83%8A%E3%83%BC%E3%82%BA%E3%82%AC%E3%82%A4%E3%83%89-%E8%8A%B1%E8%B0%B7%E6%8B%93%E7%A3%A8-ebook/dp/B07J5434JB">Nuxt.jsビギナーズガイド</a>を読む→とりあえずOK!</li>
+  <li>AtCoderを1日1問解く→△
+    <ul>
+      <li>15日弱くらい続けて、他のこと(Ruby)に興味が行ってやめちゃいました</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>健康</strong></p>
+<ul>
+  <li>朝のジムを再開する(週4、30分程度でOK)→△
+    <ul>
+      <li>行っていない週もありましたが、最後の週は早起きしたので4回行けました。</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://i.gyazo.com/bbf7164f56335aaf31e23defce2914e9.jpg" style="width: 50%" /></p>
+
+<h2 id="7月の目標">7月の目標</h2>
+
+<p><strong>技術系</strong></p>
+<ul>
+  <li>tmuxに入門する</li>
+  <li>週に1つ技術系の記事を書く</li>
+  <li>ISUCON9の予選問題をAWSで動かしてみる
+    <ul>
+      <li>最新は10ですが9がオススメみたいなので(講習より)</li>
+      <li>まず環境構築をする</li>
+      <li>講習で聞いたことをやってみる(ssh、git、計測、マニュアル、改善(N+1、キャッシュ等))</li>
+      <li>やることのチェックリストを作る</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>健康</strong></p>
+<ul>
+  <li>週4で1回30分程度運動をする(ジム)</li>
+  <li>トレーニングの目標を立てる</li>
+</ul>
+
+<p><strong>できたら天才</strong></p>
+<ul>
+  <li>SQL JudgeをAWSにデプロイする</li>
+  <li>パーフェクトRuby on Railsを読む</li>
+</ul>
+
+<h2 id="まとめ">まとめ</h2>
+
+<p>月末は運動も出来たのでとても調子が良かったです。最近よく考えていることが2つあります。1つ目は「機嫌よくあろうとすること」、2つ目は「壮大な目標を考えること」です。機嫌よくあることについて考えていて気づいたのは、何も考えずに僕の普段のレンズを通して現実をみるのは、ちょっとつらいということです。なので自分で少し楽観的なほうに歪めてあげることが必要だなと思いました。</p>
+
+<p>7月も機嫌よく過ごして、いい月にしようと思います。</p>
+
+</body>
+
+</html>
